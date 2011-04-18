@@ -4,6 +4,7 @@
 #include "main_window.h"
 #include "set_dialog.h"
 
+GtkWidget *mainWindow;
 //设置参数
 static void setConfig();
 
@@ -11,7 +12,7 @@ static void setConfig();
 int initMainWindow()
 {
     //主窗口
-    GtkWidget *mainWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    mainWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(mainWindow), "Birl---Ubuntu锐捷");
     gtk_widget_set_size_request(mainWindow, 400, 280);
     gtk_container_border_width(GTK_CONTAINER(mainWindow),0);
@@ -70,5 +71,5 @@ int initMainWindow()
 void setConfig()
 {
     debug("main_window.c","setConfig","设置参数对话框");
-    initSetDialog();
+    initSetDialog(mainWindow);
 }
