@@ -42,4 +42,8 @@ typedef struct userType
 
 //全局变量
 USER user;      //用户
+
+//调试信息输出
+void debug(const char *fileName,const char *functionName,const char *debugInfo);
+
 #endif
