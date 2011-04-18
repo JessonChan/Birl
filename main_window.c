@@ -1,6 +1,8 @@
 #include <gtk/gtk.h>
 #include <string.h>
+
 #include "main_window.h"
+#include "set_dialog.h"
 
 //设置参数
 static void setConfig();
@@ -68,4 +70,5 @@ int initMainWindow()
 void setConfig()
 {
     debug("main_window.c","setConfig","设置参数对话框");
+    initSetDialog();
 }

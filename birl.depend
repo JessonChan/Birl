@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1303131554 source:/media/元/代码/Linux/ruijie/gtk/main_window.c
+1303140684 source:/media/元/代码/Linux/ruijie/gtk/main_window.c
 	<gtk/gtk.h>
 	<string.h>
 	"main_window.h"
+	"set_dialog.h"
 
 1276853580 /usr/include/gtk-2.0/gtk/gtk.h
 	<gdk/gdk.h>
@@ -2101,4 +2102,15 @@
 	<gtk/gtk.h>
 	"main_window.h"
 	"defines.h"
+
+1303131898 source:/media/元/代码/Linux/ruijie/gtk/defines.c
+	<stdio.h>
+	"defines.h"
+
+1303140717 source:/media/元/代码/Linux/ruijie/gtk/set_dialog.c
+	<gtk/gtk.h>
+	"set_dialog.h"
+	"defines.h"
+
+1303140420 /media/元/代码/Linux/ruijie/gtk/set_dialog.h
 
