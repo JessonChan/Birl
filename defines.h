@@ -12,6 +12,8 @@ Birl is Ruijie Linux
 #define VERSION "1.07"
 #define CSTRING_SIZE 20
 #define CSTRING_LENGTH 32
+#define PCAP_ERRBUF_SIZE	256
+#define PCAP_IF_LOOPBACK	0x00000001
 #define ICO_PATH "/opt/birl/birl.ico"
 #define ABOUT_ICO "/opt/birl/birl_about.ico"
 #define BACKIMAGE_PATH "/opt/birl/backimage.jpeg"
@@ -19,7 +21,6 @@ Birl is Ruijie Linux
 #define D_DHCPSCRIPT  "dhclient %s>/dev/null 2>&1"
 #define CFG_FILE  "/opt/birl/birl.cfg"
 #define LOG_FILE  "/tmp/birl.log"
-
 
 typedef unsigned char *POINTER;
 typedef unsigned char BYTE;
@@ -48,5 +49,6 @@ GtkWidget *mainWindow;//主窗口
 
 //调试信息输出
 void debug(const char *fileName,const char *functionName,const char *debugInfo);
+void guiDebug(const char *fileName,const char *functionName,const char *debugInfo);
 
 #endif
