@@ -6,6 +6,7 @@
 extern GtkWidget *mainWindow;
 GtkWidget *dialog;
 static void argvConfig();
+static void closeSetDialog();
 
 //参数配置窗口
 void initSetDialog()
@@ -39,9 +40,6 @@ void initSetDialog()
     GtkWidget *dhcpModeComobox;
     GtkWidget *ipEntry;
     GtkWidget *maskEntry;
-    GList *nicList;
-    GList *startList;
-    GList *dhcpList ;
     //设定Label
     nicLabel = gtk_label_new("网    卡:");
     startModeLabel = gtk_label_new("组播方式：");
@@ -51,9 +49,9 @@ void initSetDialog()
 
 
     //设定combo_box
-    nicComobox = gtk_combo_new();
-    startModeComobox = gtk_combo_new();
-    dhcpModeComobox = gtk_combo_new();
+    nicComobox = gtk_combo_box_new_text ();
+    startModeComobox = gtk_combo_box_new_text();
+    dhcpModeComobox = gtk_combo_box_new_text();
     ipEntry = gtk_entry_new();
     maskEntry=gtk_entry_new();
     gtk_widget_set_size_request(ipEntry, 130, 30);
@@ -62,29 +60,28 @@ void initSetDialog()
     gtk_widget_set_size_request(nicComobox, 130, 30);
     gtk_widget_set_size_request(maskEntry,130,30);
 
-    //设定combo_box的Glist
-    nicList=NULL;
-    nicList= g_list_append(nicList,"eth0");
-    startList = NULL;
-    dhcpList = NULL;
-    gchar* sM1="标准";
-    gchar* sM2="锐捷";
-    startList = g_list_append(startList,sM1);
-    startList = g_list_append(startList,sM2);
+   // gtk_combo_set_popdown_strings(GTK_COMBO(nicComobox), nicList);
+   gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth0");
+    gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth1");
+   gchar *sM[2]={"标准","锐捷"};
+   gchar *dM[4]={"静态","认证前","认证后","二次认证"};
+   {
+       int i =0;
+       for(i=0;i<2;i++)
+       {
+           gtk_combo_box_append_text(GTK_COMBO_BOX(startModeComobox),sM[i]);
+       }
+       for(i=0;i<4;i++)
+       {
+           gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
+       }
+   }
+    gtk_combo_box_set_active(GTK_COMBO_BOX(nicComobox),0);
+     gtk_combo_box_set_active(GTK_COMBO_BOX(startModeComobox),0);
+      gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),0);
 
-    gchar* dM1="静态";
-    gchar* dM2="二次认证";
-    gchar* dM3="认证前";
-    gchar* dM4="认证后";
-
-    dhcpList = g_list_append(dhcpList,dM1);
-    dhcpList = g_list_append(dhcpList,dM2);
-    dhcpList = g_list_append(dhcpList,dM3);
-    dhcpList = g_list_append(dhcpList,dM4);
-
-    gtk_combo_set_popdown_strings(GTK_COMBO(nicComobox), nicList);
-    gtk_combo_set_popdown_strings(GTK_COMBO(startModeComobox), startList);
-    gtk_combo_set_popdown_strings(GTK_COMBO(dhcpModeComobox), dhcpList);
+  //  gtk_combo_set_popdown_strings(GTK_COMBO(startModeComobox), startList);
+   // gtk_combo_set_popdown_strings(GTK_COMBO(dhcpModeComobox), dhcpList);
 
 //    gtk_entry_set_text(GTK_COMBO(nicComobox)->entry, defaultNic);
 //    gtk_entry_set_text(GTK_COMBO(startModeComobox)->entry, defaultStart);
@@ -124,24 +121,20 @@ void initSetDialog()
     button = gtk_button_new_with_label("确定");
     gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,10);
     g_signal_connect(button, "clicked", G_CALLBACK(argvConfig), NULL);
+    g_signal_connect(G_OBJECT(dialog),"delete_event",G_CALLBACK(closeSetDialog),NULL);
+    debug("set_dialog.c","initSetDialog",gtk_combo_box_get_active_text(GTK_COMBO_BOX(nicComobox)));
     gtk_widget_show_all(dialog);
 }
 
 void argvConfig()
 {
     debug("set_dialog.c","argvCconfig","保存参数");
-    //gchar *n=gtk_entry_get_text(gtk_entry(GTK_COMBO(nicComobox)->entry));
-//    gchar *s= gtk_entry_get_text(gtk_entry(GTK_COMBO(startModeComobox)->entry));
-//    gchar *d = gtk_entry_get_text(gtk_entry(GTK_COMBO(dhcpModeComobox)->entry));
-//    gchar *i = gtk_entry_get_text(ipEntry);
-//    gchar *m=gtk_entry_get_text(maskEntry);
-
-   // sprintf(user.nic,"%s",n);
-    //debug("set_dialog.c","argvConfig",user.nic)
-//    sprintf(user.startMode,"%s",s);
-//    sprintf(user.dhcpMode,"%s",d);
-//    sprintf(user.ip,"%s",i);
-//    sprintf(user.mask,"%s",m);
+    gtk_widget_destroy(dialog);
+    gtk_widget_show_all(mainWindow);
+}
+void closeSetDialog()
+{
+    debug("set_dialog.c","closeSetDialog","未保存参数，关闭设置窗口");
     gtk_widget_destroy(dialog);
     gtk_widget_show_all(mainWindow);
 }
