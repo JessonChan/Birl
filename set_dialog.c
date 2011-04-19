@@ -2,6 +2,8 @@
 
 #include "set_dialog.h"
 #include "defines.h"
+
+extern GtkWidget *mainWindow;
 GtkWidget *dialog;
 static void argvConfig();
 
@@ -141,4 +143,5 @@ void argvConfig()
 //    sprintf(user.ip,"%s",i);
 //    sprintf(user.mask,"%s",m);
     gtk_widget_destroy(dialog);
+    gtk_widget_show_all(mainWindow);
 }
