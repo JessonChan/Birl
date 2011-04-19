@@ -66,14 +66,7 @@ void initSetDialog()
         gchar *sM[2]= {"标准","锐捷"};
         gchar *dM[4]= {"静态","认证前","认证后","二次认证"};
         int i =0;
-        for(i=0; i<2; i++)
-        {
-            gtk_combo_box_append_text(GTK_COMBO_BOX(startModeComobox),sM[i]);
-        }
-        for(i=0; i<4; i++)
-        {
-            gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
-        }
+        int activeFlag=0;
         if(loadLibpcap()==1)
         {
             CSTRING nicMsg;
@@ -84,15 +77,32 @@ void initSetDialog()
                 guiDebug("set_dialog.c","initSetDialog","没有获得任何网卡信息，程序退出,请首先确定是不是以sudo或其它管理员身份打开程序");
                 gtk_main_quit();
             }
+            activeFlag=0;
             for(i=0; i<nicNum; i++)
             {
                 gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),nicMsg[i]);
+                if(!strcmp(nicMsg[i],user.nic))
+                    activeFlag=i;
             }
+            gtk_combo_box_set_active(GTK_COMBO_BOX(nicComobox),activeFlag);
         }
+        activeFlag=0;
+        for(i=0; i<2; i++)
+        {
+            gtk_combo_box_append_text(GTK_COMBO_BOX(startModeComobox),sM[i]);
+            if(!strcmp(sM[i],user.startMode))
+                activeFlag=i;
+        }
+        gtk_combo_box_set_active(GTK_COMBO_BOX(startModeComobox),activeFlag);
+        activeFlag=0;
+        for(i=0; i<4; i++)
+        {
+            gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
+            if(!strcmp(dM[i],user.startMode))
+                activeFlag=i;
+        }
+        gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),activeFlag);
     }
-    gtk_combo_box_set_active(GTK_COMBO_BOX(nicComobox),0);
-    gtk_combo_box_set_active(GTK_COMBO_BOX(startModeComobox),0);
-    gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),0);
 
     vbox = GTK_DIALOG(dialog)->vbox;
     nicHbox = gtk_hbox_new(TRUE, 0);
@@ -126,7 +136,6 @@ void initSetDialog()
     gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,10);
     g_signal_connect(button, "clicked", G_CALLBACK(argvConfig), NULL);
     g_signal_connect(G_OBJECT(dialog),"delete_event",G_CALLBACK(closeSetDialog),NULL);
-    debug("set_dialog.c","initSetDialog",gtk_combo_box_get_active_text(GTK_COMBO_BOX(nicComobox)));
     gtk_widget_show_all(dialog);
 }
 
