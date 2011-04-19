@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1303201068 source:/media/元/代码/Linux/ruijie/gtk/main_window.c
+1303212345 source:/media/元/代码/Linux/ruijie/gtk/main_window.c
 	<gtk/gtk.h>
 	<string.h>
 	"main_window.h"
@@ -2096,7 +2096,7 @@
 1303119946 /media/元/代码/Linux/ruijie/gtk/main_window.h
 	"defines.h"
 
-1303201374 /media/元/代码/Linux/ruijie/gtk/defines.h
+1303212247 /media/元/代码/Linux/ruijie/gtk/defines.h
 	<gtk/gtk.h>
 
 1303120486 source:/media/元/代码/Linux/ruijie/gtk/main.c
@@ -2122,4 +2122,11 @@
 
 1303200638 /media/元/代码/Linux/ruijie/gtk/tray.h
 	<gtk/gtk.h>
+
+1303211246 source:/media/元/代码/Linux/ruijie/gtk/about.c
+	"about.h"
+	<gtk/gtk.h>
+	"defines.h"
+
+1303211063 /media/元/代码/Linux/ruijie/gtk/about.h
 

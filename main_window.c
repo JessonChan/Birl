@@ -81,6 +81,6 @@ void setConfig()
 void loading()
 {
     debug("main_window.c","loading","隐藏主窗口，执行登录");
-    //gtk_widget_hide_all(mainWindow);
+    gtk_widget_hide_all(mainWindow);
     initTray();
 }

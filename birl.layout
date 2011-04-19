@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="Help" open="1" top="0" tabpos="5">
+		<Cursor position="552" topLine="0" />
+	</File>
+	<File name="README" open="1" top="0" tabpos="6">
+		<Cursor position="521" topLine="0" />
+	</File>
+	<File name="defines.c" open="1" top="0" tabpos="7">
+		<Cursor position="163" topLine="0" />
+	</File>
+	<File name="defines.h" open="1" top="0" tabpos="4">
+		<Cursor position="1063" topLine="33" />
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1">
+		<Cursor position="157" topLine="0" />
+	</File>
+	<File name="main_window.c" open="1" top="0" tabpos="3">
+		<Cursor position="2473" topLine="60" />
+	</File>
+	<File name="main_window.h" open="1" top="0" tabpos="2">
+		<Cursor position="67" topLine="0" />
+	</File>
+	<File name="set_dialog.c" open="1" top="1" tabpos="9">
+		<Cursor position="4431" topLine="75" />
+	</File>
+	<File name="set_dialog.h" open="1" top="0" tabpos="8">
+		<Cursor position="83" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
