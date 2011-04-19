@@ -13,6 +13,9 @@ static void loading();
 //初始化主窗口
 int initMainWindow()
 {
+    gchar version[16]="";
+    sprintf(version,"当前版本%s",VERSION);
+    debug("main_window.c","initMainWindow",version);
     //主窗口
     mainWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(mainWindow), "Birl---Ubuntu锐捷");
