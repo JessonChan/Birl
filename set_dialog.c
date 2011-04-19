@@ -2,6 +2,7 @@
 
 #include "set_dialog.h"
 #include "defines.h"
+#include "pacp_func.h"
 
 extern GtkWidget *mainWindow;
 GtkWidget *dialog;
@@ -11,6 +12,7 @@ static void closeSetDialog();
 //参数配置窗口
 void initSetDialog()
 {
+
     //主窗口
     dialog = gtk_dialog_new();
     gtk_window_set_title(GTK_WINDOW(dialog), "设置认证方式");
@@ -19,7 +21,6 @@ void initSetDialog()
     gtk_window_set_position(GTK_WINDOW(dialog), GTK_WIN_POS_CENTER);
     gtk_window_set_icon_from_file(GTK_WINDOW(dialog),INTERNET_PATH,NULL);
 
-    //布局
     //环境变量设定
 
     GtkWidget *nicLabel;
@@ -60,12 +61,10 @@ void initSetDialog()
     gtk_widget_set_size_request(nicComobox, 130, 30);
     gtk_widget_set_size_request(maskEntry,130,30);
 
-    // gtk_combo_set_popdown_strings(GTK_COMBO(nicComobox), nicList);
-    gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth0");
-    gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth1");
-    gchar *sM[2]= {"标准","锐捷"};
-    gchar *dM[4]= {"静态","认证前","认证后","二次认证"};
+
     {
+        gchar *sM[2]= {"标准","锐捷"};
+        gchar *dM[4]= {"静态","认证前","认证后","二次认证"};
         int i =0;
         for(i=0; i<2; i++)
         {
@@ -75,20 +74,25 @@ void initSetDialog()
         {
             gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
         }
+        if(loadLibpcap()==1)
+        {
+            CSTRING nicMsg;
+            int nicNum = getNicMsg(nicMsg);
+            if(nicNum==0)
+            {
+                debug("set_dialog.c","initSetDialog","没有获得任何网卡信息，程序退出");
+                guiDebug("set_dialog.c","initSetDialog","没有获得任何网卡信息，程序退出,请首先确定是不是以sudo或其它管理员身份打开程序");
+                gtk_main_quit();
+            }
+            for(i=0; i<nicNum; i++)
+            {
+                gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),nicMsg[i]);
+            }
+        }
     }
     gtk_combo_box_set_active(GTK_COMBO_BOX(nicComobox),0);
     gtk_combo_box_set_active(GTK_COMBO_BOX(startModeComobox),0);
     gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),0);
-
-    //  gtk_combo_set_popdown_strings(GTK_COMBO(startModeComobox), startList);
-    // gtk_combo_set_popdown_strings(GTK_COMBO(dhcpModeComobox), dhcpList);
-
-//    gtk_entry_set_text(GTK_COMBO(nicComobox)->entry, defaultNic);
-//    gtk_entry_set_text(GTK_COMBO(startModeComobox)->entry, defaultStart);
-//    gtk_entry_set_text(GTK_COMBO(dhcpModeComobox)->entry, defaultMode);
-//   gtk_entry_set_text(ipEntry,defaultIP);
-//    gtk_entry_set_text(maskEntry,defaultMask);
-
 
     vbox = GTK_DIALOG(dialog)->vbox;
     nicHbox = gtk_hbox_new(TRUE, 0);
