@@ -9,7 +9,7 @@ Birl is Ruijie Linux
 
 #include <gtk/gtk.h>
 
-#define VERSION "Birl 1.07"
+#define VERSION "1.07"
 #define CSTRING_SIZE 20
 #define CSTRING_LENGTH 32
 #define ICO_PATH "/opt/birl/birl.ico"
