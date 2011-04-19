@@ -7,7 +7,9 @@ Birl is Ruijie Linux
 #ifndef DEFINES_H
 #define DEFINES_H
 
-#define VERSION "1.07"
+#include <gtk/gtk.h>
+
+#define VERSION "Birl 1.07"
 #define CSTRING_SIZE 20
 #define CSTRING_LENGTH 32
 #define ICO_PATH "/opt/birl/birl.ico"
@@ -42,6 +44,7 @@ typedef struct userType
 
 //全局变量
 USER user;      //用户
+GtkWidget *mainWindow;//主窗口
 
 //调试信息输出
 void debug(const char *fileName,const char *functionName,const char *debugInfo);
