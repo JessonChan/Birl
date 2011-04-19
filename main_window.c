@@ -3,10 +3,12 @@
 
 #include "main_window.h"
 #include "set_dialog.h"
+#include "tray.h"
 
-GtkWidget *mainWindow;
+extern GtkWidget *mainWindow;
 //设置参数
 static void setConfig();
+static void loading();
 
 //初始化主窗口
 int initMainWindow()
@@ -62,6 +64,7 @@ int initMainWindow()
 
     g_signal_connect(G_OBJECT(mainWindow),"delete_event",G_CALLBACK(gtk_main_quit),NULL);
     g_signal_connect(G_OBJECT(setConfigButton),"clicked",G_CALLBACK(setConfig),NULL);
+    g_signal_connect(G_OBJECT(loadButton),"clicked",G_CALLBACK(loading),NULL);
 
     gtk_widget_show_all (mainWindow);
 
@@ -71,5 +74,13 @@ int initMainWindow()
 void setConfig()
 {
     debug("main_window.c","setConfig","设置参数对话框");
-    initSetDialog(mainWindow);
+    gtk_widget_hide_all(mainWindow);
+    initSetDialog();
+}
+
+void loading()
+{
+    debug("main_window.c","loading","隐藏主窗口，执行登录");
+    //gtk_widget_hide_all(mainWindow);
+    initTray();
 }
