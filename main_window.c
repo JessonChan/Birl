@@ -4,6 +4,7 @@
 #include "main_window.h"
 #include "set_dialog.h"
 #include "tray.h"
+#include "read_file.h"
 
 extern GtkWidget *mainWindow;
 //设置参数
@@ -16,6 +17,16 @@ int initMainWindow()
     gchar version[16]="";
     sprintf(version,"当前版本%s",VERSION);
     debug("main_window.c","initMainWindow",version);
+    {
+        if(0==readFile())
+        {
+            debug("main_window.c","initMainWindow","打开配置文件失败，请单击设置进行参数设置");
+        }
+        else if(1==readFile())
+        {
+            debug("main_window.c","initMainWindow","打开配置文件成功");
+        }
+    }
     //主窗口
     mainWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(mainWindow), "Birl---Ubuntu锐捷");
@@ -45,13 +56,15 @@ int initMainWindow()
     GtkWidget *userEntry =gtk_entry_new();
     gtk_box_pack_start_defaults(GTK_BOX(inputUserNameHbox),userLabel);
     gtk_box_pack_start_defaults(GTK_BOX(inputUserNameHbox),userEntry);
-
+    gtk_entry_set_text(GTK_ENTRY(userEntry),user.userName);
 
 
     GtkWidget *passwdLabel=gtk_label_new("密    码");
     GtkWidget *passwdEntry =gtk_entry_new();
     gtk_box_pack_start_defaults(GTK_BOX(inputPasswdHbox),passwdLabel);
     gtk_box_pack_start_defaults(GTK_BOX(inputPasswdHbox),passwdEntry);
+    gtk_entry_set_text(GTK_ENTRY(passwdEntry),user.passwd);
+    gtk_entry_set_visibility(GTK_ENTRY(passwdEntry), 0);
 
 
     gtk_box_pack_start_defaults(GTK_BOX(inputVbox),inputUserNameHbox);
