@@ -9,11 +9,10 @@ static void trayIconPopup(GtkStatusIcon *status_icon, guint button, guint32 acti
 }
 static void loadout()
 {
-gtk_main_quit();
+    gtk_main_quit();
 }
 static void showSeverMsg()
 {
-
     GtkWidget *dialog;
     dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_DESTROY_WITH_PARENT,             //跟随父窗口关闭
                                     GTK_MESSAGE_INFO,                        //显示图标

@@ -60,28 +60,28 @@ void initSetDialog()
     gtk_widget_set_size_request(nicComobox, 130, 30);
     gtk_widget_set_size_request(maskEntry,130,30);
 
-   // gtk_combo_set_popdown_strings(GTK_COMBO(nicComobox), nicList);
-   gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth0");
+    // gtk_combo_set_popdown_strings(GTK_COMBO(nicComobox), nicList);
+    gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth0");
     gtk_combo_box_append_text(GTK_COMBO_BOX(nicComobox),"eth1");
-   gchar *sM[2]={"标准","锐捷"};
-   gchar *dM[4]={"静态","认证前","认证后","二次认证"};
-   {
-       int i =0;
-       for(i=0;i<2;i++)
-       {
-           gtk_combo_box_append_text(GTK_COMBO_BOX(startModeComobox),sM[i]);
-       }
-       for(i=0;i<4;i++)
-       {
-           gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
-       }
-   }
+    gchar *sM[2]= {"标准","锐捷"};
+    gchar *dM[4]= {"静态","认证前","认证后","二次认证"};
+    {
+        int i =0;
+        for(i=0; i<2; i++)
+        {
+            gtk_combo_box_append_text(GTK_COMBO_BOX(startModeComobox),sM[i]);
+        }
+        for(i=0; i<4; i++)
+        {
+            gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
+        }
+    }
     gtk_combo_box_set_active(GTK_COMBO_BOX(nicComobox),0);
-     gtk_combo_box_set_active(GTK_COMBO_BOX(startModeComobox),0);
-      gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),0);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(startModeComobox),0);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),0);
 
-  //  gtk_combo_set_popdown_strings(GTK_COMBO(startModeComobox), startList);
-   // gtk_combo_set_popdown_strings(GTK_COMBO(dhcpModeComobox), dhcpList);
+    //  gtk_combo_set_popdown_strings(GTK_COMBO(startModeComobox), startList);
+    // gtk_combo_set_popdown_strings(GTK_COMBO(dhcpModeComobox), dhcpList);
 
 //    gtk_entry_set_text(GTK_COMBO(nicComobox)->entry, defaultNic);
 //    gtk_entry_set_text(GTK_COMBO(startModeComobox)->entry, defaultStart);
