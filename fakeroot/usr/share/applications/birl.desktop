@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Version=1.0
+Name=Birl锐捷
+Name[zh_CN]=Birl锐捷
+Comment=Birl is RuiJieClient For Linux
+Comment[zh_CN]=Ubuntu下好用的锐捷图形认证客户端
+Type=Application
+Terminal=false
+Exec=gksu birl
+Icon=/opt/birl/internet.png
+Categories=Network;

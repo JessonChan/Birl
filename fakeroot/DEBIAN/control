@@ -1,0 +1,10 @@
+Package: birl
+Version: 1.06.1
+Architecture: i386
+Maintainer: BirlRoom
+Installed-Size: 140
+Depends: libpcap0.8 | libpcap0.9 | libpcap1.0 | libpcap1
+Section: net
+Priority: optional
+Homepage: http://www.cnblogs.com/JessonChan/
+Description: Write by JessonChan ,and ex-partner ,DingZhiPing,you can contact us by the Gmail chinachendongpo@gmail.com! or QQEmail 1401570404@qq.com .I will be happy to get your letter!Thanks Great Thanks to Mentohust----From BirlRoom

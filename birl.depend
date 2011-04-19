@@ -2109,16 +2109,17 @@
 	<stdio.h>
 	"defines.h"
 
-1303201180 source:/media/元/代码/Linux/ruijie/gtk/set_dialog.c
+1303219292 source:/media/元/代码/Linux/ruijie/gtk/set_dialog.c
 	<gtk/gtk.h>
 	"set_dialog.h"
 	"defines.h"
 
 1303167388 /media/元/代码/Linux/ruijie/gtk/set_dialog.h
 
-1303200875 source:/media/元/代码/Linux/ruijie/gtk/tray.c
+1303212920 source:/media/元/代码/Linux/ruijie/gtk/tray.c
 	"tray.h"
 	"defines.h"
+	"about.h"
 
 1303200638 /media/元/代码/Linux/ruijie/gtk/tray.h
 	<gtk/gtk.h>
