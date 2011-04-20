@@ -37,8 +37,13 @@ int readFile()
     if ((fp=fopen(LOG_FILE, "r")) == NULL)
         return 0;
     fgets(tmp,255,fp);//这是第一行的[birl]
+    if(!strcmp(tmp,"[first]\n"))
+    {
+        debug("read_file.c","readFile","这是第一次运行程序");
+        guiDebug("read_file.c","readFile","这是第一次运行程序,请一定要进行设置哟~方法可以在设置->帮助里找到的");
+    }
     fscanf(fp,"%s",user.userName);
-    fscanf(fp,"%s",tmp);;//密码
+    fscanf(fp,"%s",tmp);//密码
     decodePass(tmp);
     sprintf(user.passwd,"%s",tmp);
     fscanf(fp,"%s",user.nic);//网卡
