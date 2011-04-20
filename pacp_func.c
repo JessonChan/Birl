@@ -18,13 +18,8 @@ static void *libpcap = NULL;
 int loadLibpcap()
 {
     char *error;
-    char *file[] = {"libpcap.so", "libpcap.so.1", "libpcap.so.1.0", "libpcap.so.0.9", "libpcap.so.0.8"};
-    int i, count = 5;
-    for (i=0; i<count && !libpcap; i++)
-    {
-        libpcap = dlopen(file[i], RTLD_LAZY);
-        error = dlerror();
-    }
+    libpcap = dlopen("libpcap.so.1.0.0", RTLD_LAZY);
+    error = dlerror();
     if (libpcap == NULL)
     {
         debug("pcap_func.c","loadLibpcap","没有找到libpacp的包，你可以试着在其它地方复制libpcap.so到/usr/lib下");
