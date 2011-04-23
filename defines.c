@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <arpa/inet.h>
 
 #include "defines.h"
 
@@ -20,6 +23,18 @@ void guiDebug(const char *fileName,const char *functionName,const char *debugInf
     gtk_window_set_title(GTK_WINDOW(dialog), ("出错信息"));//对话框的标题
     gtk_dialog_run(GTK_DIALOG(dialog));//运行对话框
     gtk_widget_destroy(dialog);//删除对话框
+}
+
+void user2net()
+{
+    strcpy(net.userName,user.userName);
+    strcpy(net.passwd,user.passwd);
+    strcpy(net.nic,user.nic);
+    net.startMode=strcmp(user.startMode,"标准")==0?0:1;
+    net.dhcpMode=strcmp(user.dhcpMode,"静态")==0?0:(strcmp(user.dhcpMode,"二次认证")==0?1:(strcmp(user.dhcpMode,"认证后")==0?2:3));
+    net.ip=inet_addr(user.ip);
+    net.mask=inet_addr(user.mask);
+    sprintf(net.dhcpScript,D_DHCPSCRIPT,net.nic);
 }
 
 

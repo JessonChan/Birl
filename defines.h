@@ -29,6 +29,8 @@ typedef unsigned short int WORD;
 typedef int LONG;
 typedef unsigned int DWORD;
 typedef unsigned int UINT4;
+typedef unsigned int u_int32_t;
+typedef __u_char u_char;
 typedef char CSTRING[CSTRING_SIZE][CSTRING_LENGTH];
 typedef char STRING [CSTRING_LENGTH];
 
@@ -43,12 +45,29 @@ typedef struct userType
     STRING mask;
 } USER;
 
+typedef struct netType
+{
+    STRING userName;
+    STRING passwd;
+    STRING nic;
+    u_int32_t ip;
+    u_int32_t mask;
+    int startMode;
+    int dhcpMode;
+    u_char localMAC[6];
+    u_char destMAC[6];
+    char dhcpScript[CSTRING_LENGTH];
+}NET;
+
 //全局变量
 USER user;      //用户
+NET net;
 GtkWidget *mainWindow;//主窗口
+GtkStatusIcon* trayicon ;//托盘
 
 //调试信息输出
 void debug(const char *fileName,const char *functionName,const char *debugInfo);
 void guiDebug(const char *fileName,const char *functionName,const char *debugInfo);
+void user2net();
 
 #endif
