@@ -5,6 +5,7 @@
 #include "set_dialog.h"
 #include "tray.h"
 #include "read_file.h"
+#include "main_birl.h"
 
 extern GtkWidget *mainWindow;
 GtkWidget *passwdEntry;
@@ -120,6 +121,7 @@ void loading()
         debug("main_window.c","loading","存在密码，登录");
         gtk_widget_hide_all(mainWindow);
         initTray();
+        g_thread_create(startBirl,NULL,0,NULL);
     }
     else if(!strlen(user.userName))
     {

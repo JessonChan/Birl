@@ -3,6 +3,8 @@
 #include "about.h"
 
 extern GtkWidget* mainWindow;
+extern gchar tipMsg[64];
+extern GtkStatusIcon* trayicon ;
 static void trayIconPopup(GtkStatusIcon *status_icon, guint button, guint32 active_time, gpointer popUpMenu)
 {
     gtk_menu_popup(GTK_MENU(popUpMenu), NULL, NULL, gtk_status_icon_position_menu, status_icon, button, active_time);
@@ -28,7 +30,7 @@ static void showSeverMsg()
 //初始化托盘图标
 void initTray()
 {
-    GtkStatusIcon* trayicon = gtk_status_icon_new_from_file(ICO_PATH);
+    trayicon = gtk_status_icon_new_from_file(ICO_PATH);
     GtkWidget* trayiconMenu = gtk_menu_new();
     GtkWidget* menuItemExit = gtk_menu_item_new_with_label("退出");
     GtkWidget* menuItemAbout = gtk_menu_item_new_with_label("关于");
@@ -39,9 +41,9 @@ void initTray()
     gtk_menu_shell_append(GTK_MENU_SHELL(trayiconMenu), menuItemSeverMsg);
 
     gtk_widget_show_all(trayiconMenu);
-    gchar tooltip[32];
-    sprintf(tooltip,"%s  %s","Birl",VERSION);
-    gtk_status_icon_set_tooltip (trayicon, tooltip);
+    gchar tipMsg[16];
+    sprintf(tipMsg,"%s  %s","Birl",VERSION);
+    gtk_status_icon_set_tooltip (trayicon, tipMsg);
     gtk_status_icon_set_visible(trayicon, 1);
     g_signal_connect(GTK_STATUS_ICON (trayicon), "popup-menu", GTK_SIGNAL_FUNC (trayIconPopup), trayiconMenu);
     g_signal_connect(GTK_OBJECT(menuItemExit),"activate",G_CALLBACK(loadout),NULL);

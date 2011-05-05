@@ -12,4 +12,5 @@ extern NET net;
 gpointer startBirl()
 {
     user2net();
+    return (gpointer)NULL;
 }

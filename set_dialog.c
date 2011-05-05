@@ -98,7 +98,7 @@ void initSetDialog()
         for(i=0; i<4; i++)
         {
             gtk_combo_box_append_text(GTK_COMBO_BOX(dhcpModeComobox),dM[i]);
-            if(!strcmp(dM[i],user.startMode))
+            if(!strcmp(dM[i],user.dhcpMode))
                 activeFlag=i;
         }
         gtk_combo_box_set_active(GTK_COMBO_BOX(dhcpModeComobox),activeFlag);
