@@ -142,6 +142,7 @@ void initSetDialog()
 void argvConfig()
 {
     debug("set_dialog.c","argvCconfig","保存参数");
+    //
     gtk_widget_destroy(dialog);
     gtk_widget_show_all(mainWindow);
 }
