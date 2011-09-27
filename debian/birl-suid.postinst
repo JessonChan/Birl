@@ -1,2 +1,4 @@
 #!/bin/sh
-chmod +s /usr/bin/birl
+if [ -f /usr/bin/birl ]; then
+	chmod +s /usr/bin/birl
+fi
