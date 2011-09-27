@@ -37,6 +37,10 @@ file(GLOB birl_DATAFILE "birl/*")
 install(FILES ${birl_DATAFILE} DESTINATION ${DATA_INSTALL_DIR}/birl/)
 
 
+configure_file(./birl.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/birl.desktop)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/birl.desktop DESTINATION ${DESKTOP_INSTALL_DIR})
+
+
 # compile option switch
 option(NLS "Native language support" ON)
 
