@@ -1,0 +1,21 @@
+Source: birl
+Section: net
+Priority: optional
+Maintainer: YunQiang Su <wzssyqa@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), cmake, libgtk2.0-dev
+Standards-Version: 3.9.2
+Homepage: https://github.com/JessonChan/birl
+#Vcs-Git: git://git.debian.org/collab-maint/birl.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/birl.git;a=summary
+
+Package: birl
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpcap0.8, isc-dhcp-client
+Description: 瑞捷认证图形客户端
+ 自身可以，也可以调用wine的。
+
+Package: birl-suid
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, birl
+Description: 瑞捷认证图形客户端 - 设置 suid
+ 自身可以，也可以调用wine的。安装这个包将会设置可执行程序的 suid 位。

@@ -6,26 +6,14 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/birl" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/birl" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-Os" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
@@ -35,47 +23,58 @@
 		<Linker>
 			<Add option="`pkg-config gtk+-2.0 --libs`" />
 		</Linker>
-		<Unit filename="Help" />
-		<Unit filename="README" />
 		<Unit filename="about.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="about.h" />
-		<Unit filename="argv.c">
+		<Unit filename="common.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="argv.h" />
-		<Unit filename="defines.c">
+		<Unit filename="common.h" />
+		<Unit filename="config.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="defines.h" />
+		<Unit filename="config.h" />
+		<Unit filename="dlfunc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="dlfunc.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main_birl.c">
+		<Unit filename="md5.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main_birl.h" />
-		<Unit filename="main_window.c">
+		<Unit filename="md5.h" />
+		<Unit filename="mentohust.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main_window.h" />
-		<Unit filename="pacp_func.c">
+		<Unit filename="mentohust.h" />
+		<Unit filename="mycheck.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="pacp_func.h" />
-		<Unit filename="read_file.c">
+		<Unit filename="mycheck.h" />
+		<Unit filename="myconfig.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="read_file.h" />
-		<Unit filename="set_dialog.c">
+		<Unit filename="myconfig.h" />
+		<Unit filename="myfunc.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="set_dialog.h" />
-		<Unit filename="tray.c">
+		<Unit filename="myfunc.h" />
+		<Unit filename="myini.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="tray.h" />
+		<Unit filename="myini.h" />
+		<Unit filename="mystate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mystate.h" />
+		<Unit filename="trayicon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="trayicon.h" />
+		<Unit filename="types.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
